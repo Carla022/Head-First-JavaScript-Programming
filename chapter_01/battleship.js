@@ -31,34 +31,39 @@ let hits = 0;
 let guesses = 0;
 let isSunk = false;
 
-console.log("Here2")
 
-while (isSunk == false) {
-    guess = prompt("SARGEANT: Enemy Spotted, Defend Your Post\n\nReady, Aim...Fire! (Enter A Number From 0-6) :");
 
-    if (guess < 0 || guess > 6){
-        
-        alert("SARGEANT: Please Aim For The Enemy Ship!\n(Enter A Valid Number)");
+window.onload = function () { 
+    setTimeout(game, 1500); // Wait 1.5 second before starting
+};
 
-    } else {
-        guesses += 1;
+function game () {
+    while (isSunk == false) {
+        guess = prompt("SARGEANT: Enemy Spotted, Defend Your Post\n\nReady, Aim...Fire! (Enter A Number From 0-6) :");
 
-        if (guess == location01 || guess == location02 || guess == location03) {
-    
-            hits += 1;
-            alert("HIT!");
+        if (guess < 0 || guess > 6){
+            
+            alert("SARGEANT: Please Aim For The Enemy Ship!\n(Enter A Valid Number)");
 
-            if (hits == 3){
-                isSunk = true;
-
-                alert("ENEMY: Ships Down! Retreat, Retreat!");
-            } 
         } else {
-            alert("MISS");
+            guesses += 1;
+
+            if (guess == location01 || guess == location02 || guess == location03) {
+        
+                hits += 1;
+                alert("HIT!");
+
+                if (hits == 3){
+                    isSunk = true;
+
+                    alert("ENEMY: Ships Down! Retreat, Retreat!");
+                } 
+            } else {
+                alert("MISS");
+            }
         }
     }
-}
 
-let stats = "SARGEANT: You Have Taken Down An Enemy Ship, Here Is Your Report:\nNumber of Guesses: " + guesses + "\nShooting Accuracy: " + (3/guesses*100) + "%";
-alert(stats);
-
+    let stats = "SARGEANT: You Have Taken Down An Enemy Ship, Here Is Your Report:\nNumber of Guesses: " + guesses + "\nShooting Accuracy: " + (3/guesses*100) + "%";
+    alert(stats);
+};
