@@ -21,15 +21,17 @@ Rule: One ship takes up 3 consecutive blocks on the row (locations)
 
 */
 
-
-let location01 = 3;
-let location02 = 4;
-let location03 = 5;
+let randomLoc = Math.floor(Math.random() * 5);
+let location01 = randomLoc;
+let location02 = location01 + 1;
+let location03 = location02 + 1;
 
 let guess;
 let hits = 0;
 let guesses = 0;
 let isSunk = false;
+
+
 
 
 
